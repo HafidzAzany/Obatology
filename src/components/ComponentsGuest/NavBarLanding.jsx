@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png"; 
+import logo from "../../assets/logo.png";
 
 export default function NavBarLanding() {
   return (
@@ -21,18 +21,19 @@ export default function NavBarLanding() {
           >
             Home
           </a>
-          <a
-            href="#About Us"
+          <Link
+            to="/about"
             className="text-[rgb(0,0,0)] font-light hover:text-[rgb(19,100,255)] hover:font-bold transition"
           >
             About Us
-          </a>
-          <a
-            href="#Produk"
+          </Link>
+          <Link
+            to="/products"
             className="text-[rgb(0,0,0)] font-light hover:text-[rgb(19,100,255)] hover:font-bold transition"
           >
             Produk
-          </a>
+          </Link>
+
           <a
             href="#Contact Us"
             className="text-[rgb(0,0,0)] font-light hover:text-[rgb(19,100,255)] hover:font-bold transition"

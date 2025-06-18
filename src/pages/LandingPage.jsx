@@ -5,6 +5,7 @@ import {
   FaGift,
   FaHeadset,
 } from "react-icons/fa";
+import ProductsLanding from "./ProductsLanding"; // sesuaikan path jika berbeda
 
 export default function LandingPage() {
   return (

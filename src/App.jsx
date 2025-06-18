@@ -4,7 +4,10 @@ import viteLogo from "/vite.svg";
 import "./assets/tailwind.css";
 import { Route, Routes } from "react-router-dom";
 import React from "react";
+
+//Dashoard
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+
 const Customers = React.lazy(() => import("./pages/Customers"));
 const FormCustomers = React.lazy(() => import("./pages/FormCustomers"));
 const Orders = React.lazy(() => import("./pages/Orders"));
@@ -19,6 +22,13 @@ const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 import Loading from "./components/Loading.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
+
+//ProductsLanding
+import ProductsLanding from './pages/ProductsLanding';
+
+//AboutClinic
+import AboutClinic from './pages/AboutClinic';
+
 const ListUser = React.lazy(() => import("./pages/User"));
 const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
@@ -32,11 +42,17 @@ function App() {
     <Suspense fallback={<Loading />}>
       <Routes>
         
-        {/* PROJECT */}
+        {/* Route untuk halaman Dashboard */}
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
         </Route>
 
+        {/* Route untuk halaman Produk */}
+        <Route path="/products" element={<ProductsLanding />} />
+
+        {/* Route untuk halaman About */}
+        <Route path="/about" element={<AboutClinic />} />
+        
         <Route
           path="/*"
           element={
@@ -47,6 +63,8 @@ function App() {
             />
           }
         />
+
+        {/* Route untuk halaman LandingPage */}
         <Route element={<LandingLayout />}>
           <Route path="/" element={<LandingPage />} />
           {/* <Route path="/orders" element={<Orders />} />
