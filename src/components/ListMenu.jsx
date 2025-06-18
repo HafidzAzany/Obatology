@@ -1,6 +1,7 @@
+import { AiFillMedicineBox } from "react-icons/ai"; 
+import { GiMedicinePills } from "react-icons/gi"; 
+import { HiDocumentReport } from "react-icons/hi"; 
 import { CgNotes } from "react-icons/cg"; 
-import { RiFileUserLine } from "react-icons/ri"; 
-import { SlBasket } from "react-icons/sl";
 import { RiDashboardLine } from "react-icons/ri";
 import { BsPeople } from "react-icons/bs";
 import { BiErrorAlt } from "react-icons/bi"; 
@@ -14,8 +15,8 @@ export default function ListMenu() {
     `flex cursor-pointer items-center rounded-xl p-4  space-x-2
         ${
           isActive
-            ? "text-hijau bg-green-200 font-extrabold"
-            : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+            ? "text-black bg-blue-200 font-extrabold"
+            : "text-white hover:text-white hover:bg-blue-400 hover:font-extrabold"
         }`;
 
   return (
@@ -29,23 +30,29 @@ export default function ListMenu() {
         </li>
         <li>
           <NavLink id="menu-2" to="/orders" className={menuClass}>
-            <SlBasket className="mr-4 text-xl" />
-            Orders
+            <GiMedicinePills className="mr-4 text-xl"/>
+            Data Obat
           </NavLink>
         </li>
         <li>
           <NavLink id="menu-3" to="/customers" className={menuClass}>
-            <BsPeople className="mr-4 text-xl" />
-            Customers
+          <AiFillMedicineBox className="mr-4 text-xl" />
+            Data Obat Masuk
+          </NavLink>
+        </li>
+        <li>
+          <NavLink id="menu-4" to="/400" className={menuClass}>
+            <HiDocumentReport className="mr-4 text-xl" />
+            Laporan
           </NavLink>
         </li>
         <li>
           <NavLink id="menu-7" to="/ListUser" className={menuClass}>
-            <RiFileUserLine className="mr-2 text-xl" />
-            List User
+            <BsPeople className="mr-4 text-xl" />
+            Data User
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
                   id="menu-8"
                   to="/products"
@@ -65,12 +72,7 @@ export default function ListMenu() {
                   Notes
           </NavLink>
         </li>
-        <li>
-          <NavLink id="menu-4" to="/400" className={menuClass}>
-            <BiErrorAlt className="mr-2 text-xl" />
-            Error 400
-          </NavLink>
-        </li>
+        
         <li>
           <NavLink id="menu-6" to="/401" className={menuClass}>
             <CgUnavailable className="mr-2 text-xl" />
@@ -82,7 +84,7 @@ export default function ListMenu() {
             <RiForbid2Line className="mr-2 text-xl" />
             Error 403
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

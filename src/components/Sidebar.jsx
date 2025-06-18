@@ -3,13 +3,14 @@ import ListMenu from "./ListMenu";
 
 export default function Sidebar() {
     return (
-        <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
+        <div id="sidebar" className="bg-[rgb(97,182,248)] flex min-h-screen w-90 flex-col p-10 shadow-lg">
             {/* Logo */}
             <div id="sidebar-logo"className="flex flex-col">
-                <span id="logo-title"className="font-poppins-extrabold text-[48px] text-gray-900">
-		                Sedap <b id="logo-dot"className="text-hijau">.</b>
+                
+                <span id="logo-title"className="font-poppins-extrabold text-[48px] text-white-900">
+                        <img src="../img/logo1.jpg" alt="" />
 		            </span>
-                <span id="logo-subtitle"className="font-barlow font-semibold text-gray-400">Modern Admin Dashboard</span>
+                <span id="logo-subtitle"className="font-barlow font-semibold text-gray-400"></span>
             </div>
 
             <ListMenu/>
@@ -25,8 +26,8 @@ export default function Sidebar() {
                     </div>
                     <img id="footer-avatar" className="	w-20 rounded-full" src="https://avatar.iran.liara.run/public/28" />
                 </div>
-                <span id="footer-brand"className="font-bold text-gray-400">Sedap Restaurant Admin Dashboard</span>
-                <p id="footer-copyright"className="font-light text-gray-400">&copy; 2025 All Right Reserved</p>
+                <span id="footer-brand"className="font-bold text-white">Sedap Restaurant Admin Dashboard</span>
+                <p id="footer-copyright"className="font-light text-white">&copy; 2025 All Right Reserved</p>
             </div>
         </div>
     );
