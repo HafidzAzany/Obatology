@@ -18,12 +18,9 @@ const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 import Loading from "./components/Loading.jsx";
+import { MdAdminPanelSettings } from "react-icons/md";
 const ListUser = React.lazy(() => import("./pages/User"));
-
-const GuestLayout = React.lazy(() => import("./layouts/GuestLayout"));
 const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
-const DashboardGuest = React.lazy(() => import("./pages/DashboardGuest"));
-
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
 
 //PROJECT
@@ -36,8 +33,8 @@ function App() {
       <Routes>
         
         {/* PROJECT */}
-        <Route element={<LandingLayout />}>
-          <Route path="/landing" element={<LandingPage />} />
+        <Route element={<MainLayout />}>
+          <Route path="/admin" element={<Dashboard />} />
         </Route>
 
         <Route
@@ -50,12 +47,12 @@ function App() {
             />
           }
         />
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/orders" element={<Orders />} />
+        <Route element={<LandingLayout />}>
+          <Route path="/" element={<LandingPage />} />
+          {/* <Route path="/orders" element={<Orders />} />
           <Route path="/formorders" element={<FormOrders />} />
           <Route path="/customers" element={<Customers />} />
-          <Route path="/formcustomers" element={<FormCustomers />} />
+          <Route path="/formcustomers" element={<FormCustomers />} /> */}
           <Route
             path="/400"
             element={
@@ -86,19 +83,15 @@ function App() {
               />
             }
           />
-          <Route path="/ListUser" element={<ListUser />} />
+          {/* <Route path="/ListUser" element={<ListUser />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/notes" element={<Notes />} />
+          <Route path="/notes" element={<Notes />} /> */}
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
-        </Route>
-        <Route element={<GuestLayout />}>
-          {/* <Route path="/" element={<NavBar />} /> */}
-          <Route path="/guest" element={<DashboardGuest />} />
         </Route>
       </Routes>
     </Suspense>
@@ -107,39 +100,3 @@ function App() {
 
 export default App;
 
-// import React, { Suspense } from "react";
-// import { Routes, Route } from "react-router-dom";
-// import "./assets/tailwind.css"; // Tailwind CSS kamu
-// import Loading from "./components/Loading";
-
-// // Lazy load komponen landing page
-// const LandingPage = React.lazy(() => import("./pages/LandingPage"));
-// const LandingLayout = React.lazy(() => import("./layouts/LandingLayout"));
-// const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
-
-// function App() {
-//   return (
-//     <Suspense fallback={<Loading />}>
-//       <Routes>
-//         {/* Route untuk halaman landing */}
-//         <Route element={<LandingLayout />}>
-//           <Route path="/landing" element={<LandingPage />} />
-//         </Route>
-
-//         {/* Route fallback jika URL tidak ditemukan */}
-//         <Route
-//           path="*"
-//           element={
-//             <ErrorPage
-//               kode="404"
-//               deskripsi="Halaman tidak ditemukan"
-//               img="./img/Error404.jpg"
-//             />
-//           }
-//         />
-//       </Routes>
-//     </Suspense>
-//   );
-// }
-
-// export default App;

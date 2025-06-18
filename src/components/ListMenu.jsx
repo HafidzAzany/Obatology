@@ -22,7 +22,7 @@ export default function ListMenu() {
     <div id="sidebar-menu" className="mt-10">
       <ul id="menu-list" className="space-y-3">
         <li>
-          <NavLink id="menu-1" to="/" className={menuClass}>
+          <NavLink id="menu-1" to="/admin" className={menuClass}>
             <RiDashboardLine className="mr-4 text-xl" />
             Dashboard
           </NavLink>
