@@ -12,6 +12,7 @@ const Customers = React.lazy(() => import("./pages/Customers"));
 const FormCustomers = React.lazy(() => import("./pages/FormCustomers"));
 const Orders = React.lazy(() => import("./pages/Orders"));
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
+const Inventory = React.lazy(() => import("./pages/Inventory"));
 const Products = React.lazy(() => import("./pages/Products"));
 const Notes = React.lazy(() => import("./pages/Notes"));
 const FormOrders = React.lazy(() => import("./pages/FormOrders"));
@@ -47,6 +48,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/obat" element={<MedicineList />} />
+          <Route path="/inventory" element={<Inventory />} />
         </Route>
 
         {/* Route untuk halaman Produk */}

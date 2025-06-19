@@ -18,7 +18,7 @@ export default function Header() {
             {/* Icon & Profile Section */}
             <div id="icons-container" className="flex items-center space-x-4">
                 {/* Icons */}
-                <div id="notification-icon" className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer">
+                {/* <div id="notification-icon" className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer">
                     <FaBell />
                     <span id="notification-badge" className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-200 rounded-full px-2 py-1 text-xs">50</span>
                 </div>
@@ -27,17 +27,17 @@ export default function Header() {
                 </div>
                 <div id="settings-icon" className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer">
                     <SlSettings />
-                </div>
+                </div> */}
              
 
                 {/* Profile Section */}
                 <div id="profile-container" className="flex items-center space-x-4 border-l pl-4 border-gray-300">
                     <span id="profile-text" className="w-10 h-10 rounded-full">
-                        Hello, <b>Apiz</b>
+                        Hi! Admin
                     </span>
                     <img
                         id="profile-avatar"
-                        src="https://avatar.iran.liara.run/public/28"
+                        src="../img/AvaM2.png"
                         className="w-10 h-10 rounded-full"
                     />
                 </div>

@@ -53,7 +53,7 @@ const medicines = [
 
 const MedicineList = () => {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-white min-h-screen">
       <div className="flex justify-between items-center mb-4">
         <div>
           <h2 className="text-xl font-semibold text-gray-700">Inventory › <span className="text-black">List of Medicines (298)</span></h2>
