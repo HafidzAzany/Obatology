@@ -29,7 +29,7 @@ export default function ListMenu() {
           </NavLink>
         </li>
         <li>
-          <NavLink id="menu-2" to="/orders" className={menuClass}>
+          <NavLink id="menu-2" to="/obat" className={menuClass}>
             <GiMedicinePills className="mr-4 text-xl"/>
             Data Obat
           </NavLink>

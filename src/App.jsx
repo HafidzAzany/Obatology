@@ -11,6 +11,7 @@ const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Customers = React.lazy(() => import("./pages/Customers"));
 const FormCustomers = React.lazy(() => import("./pages/FormCustomers"));
 const Orders = React.lazy(() => import("./pages/Orders"));
+const MedicineList = React.lazy(() => import("./pages/MedicineList"));
 const Products = React.lazy(() => import("./pages/Products"));
 const Notes = React.lazy(() => import("./pages/Notes"));
 const FormOrders = React.lazy(() => import("./pages/FormOrders"));
@@ -45,6 +46,7 @@ function App() {
         {/* Route untuk halaman Dashboard */}
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/obat" element={<MedicineList />} />
         </Route>
 
         {/* Route untuk halaman Produk */}
