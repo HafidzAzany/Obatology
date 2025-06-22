@@ -3,13 +3,13 @@ import logo from "../../assets/logo.png";
 
 export default function NavBarLanding() {
   return (
-    <header className="bg-[rgb(190,211,227)] text-white py-4 shadow-md z-50">
+    <header className="bg-[rgb(97,182,248)] text-white py-4 shadow-md z-50">
       <div className="container mx-auto flex items-center justify-between px-4">
         <div className="text-2xl flex items-center gap-2">
           <img src={logo} alt="Logo" className="h-30 w-20 object-contain" />
           <Link
             to="/landing"
-            className="text-[rgb(19,100,255)] hover:text-[rgb(196,227,190)] hover:font-bold transition"
+            className="text-[rgb(19,100,255)] hover:text-[rgb(139,227,134)] hover:font-bold transition"
           >
             Obatology
           </Link>

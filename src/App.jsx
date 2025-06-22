@@ -24,10 +24,10 @@ import Loading from "./components/Loading.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
 
 //ProductsLanding
-import ProductsLanding from './pages/ProductsLanding';
+import ProductsLanding from "./pages/ProductsLanding";
 
 //AboutClinic
-import AboutClinic from './pages/AboutClinic';
+import AboutClinic from "./pages/AboutClinic";
 
 const ListUser = React.lazy(() => import("./pages/User"));
 const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
@@ -41,18 +41,11 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        
         {/* Route untuk halaman Dashboard */}
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
         </Route>
 
-        {/* Route untuk halaman Produk */}
-        <Route path="/products" element={<ProductsLanding />} />
-
-        {/* Route untuk halaman About */}
-        <Route path="/about" element={<AboutClinic />} />
-        
         <Route
           path="/*"
           element={
@@ -66,7 +59,16 @@ function App() {
 
         {/* Route untuk halaman LandingPage */}
         <Route element={<LandingLayout />}>
+        
+          {/* Route untuk halaman LandingPage */}
           <Route path="/" element={<LandingPage />} />
+
+          {/* Route untuk halaman Produk */}
+          <Route path="/products" element={<ProductsLanding />} />
+
+          {/* Route untuk halaman About */}
+          <Route path="/about" element={<AboutClinic />} />
+
           {/* <Route path="/orders" element={<Orders />} />
           <Route path="/formorders" element={<FormOrders />} />
           <Route path="/customers" element={<Customers />} />
@@ -117,4 +119,3 @@ function App() {
 }
 
 export default App;
-
