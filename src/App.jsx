@@ -26,7 +26,7 @@ import Loading from "./components/Loading.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
 
 //ProductsLanding
-import ProductsLanding from "./pages/ProductsLanding";
+import ProductsLanding from "./pages/ProductsObat.jsx";
 
 //AboutClinic
 import AboutClinic from "./pages/AboutClinic";
@@ -63,7 +63,6 @@ function App() {
 
         {/* Route untuk halaman LandingPage */}
         <Route element={<LandingLayout />}>
-        
           {/* Route untuk halaman LandingPage */}
           <Route path="/" element={<LandingPage />} />
 

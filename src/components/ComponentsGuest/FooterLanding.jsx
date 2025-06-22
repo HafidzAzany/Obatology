@@ -1,7 +1,7 @@
 export default function FooterLanding() {
   return (
     <footer className="bg-[#03061f] text-white py-10">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
         <div>
           <h3 className="font-bold text-lg mb-2">Obatology</h3>
           <p className="text-gray-400">
@@ -9,6 +9,7 @@ export default function FooterLanding() {
             terpercaya.
           </p>
         </div>
+
         <div>
           <h4 className="font-semibold mb-2">Navigasi</h4>
           <ul className="space-y-1">
@@ -34,6 +35,7 @@ export default function FooterLanding() {
             </li>
           </ul>
         </div>
+
         <div>
           <h4 className="font-semibold mb-2">Ikuti Kami</h4>
           <div className="flex space-x-3">
@@ -57,9 +59,20 @@ export default function FooterLanding() {
             </a>
           </div>
         </div>
+
+        <div id="kontak">
+          <h4 className="font-semibold mb-2">Kontak Klinik</h4>
+          <ul className="text-gray-400 space-y-1">
+            <li>📍 Jl. Kesehatan No. 10, Pekanbaru</li>
+            <li>📞 (0761) 123-456</li>
+            <li>✉️ info@obatology.id</li>
+            <li>🕒 Senin - Sabtu, 08.00 - 17.00</li>
+          </ul>
+        </div>
       </div>
+
       <div className="text-center text-gray-500 mt-10 text-xs">
-        &copy; {new Date().getFullYear()} Obatology. All rights reserved.
+        &copy; {new Date().getFullYear()} Obatology. Hak cipta dilindungi.
       </div>
     </footer>
   );

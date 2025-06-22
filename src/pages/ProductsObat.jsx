@@ -20,27 +20,28 @@ const products = [
 ];
 
 const categories = [
-  "Pain Relievers",
-  "Allergy Medications",
-  "First Aid Supplies",
-  "Dental Care",
+  "Pereda Nyeri",
+  "Obat Alergi",
+  "Perlengkapan P3K",
+  "Perawatan Gigi",
 ];
 
 const services = [
-  "Prescription Filling",
-  "Home Delivery",
-  "Health Consultations",
+  "Penebusan Resep",
+  "Pengantaran ke Rumah",
+  "Konsultasi Kesehatan",
 ];
 
 export default function ProductsPage() {
   return (
-    <div className="bg-white text-black">
+    <div className="bg-blue-100 text-black">
       <section className="container mx-auto px-4 py-12">
-        <p className="text-green-600 font-semibold">Featured</p>
-        <h2 className="text-3xl font-bold mb-4">Our Products</h2>
+        <p className="text-green-600 font-semibold">Unggulan</p>
+        <h2 className="text-3xl font-bold mb-4">Produk Kami</h2>
         <p className="text-gray-600 max-w-md mb-10">
-          Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet
-          suscipit nulla. Nullam vitae sit tempus diam.
+          Kami menyediakan berbagai produk kesehatan berkualitas tinggi yang
+          siap dikirim langsung ke rumah Anda. Temukan kebutuhan Anda dengan
+          mudah di sini.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
@@ -71,20 +72,21 @@ export default function ProductsPage() {
             >
               <div className="text-lg font-semibold">{category}</div>
               <Link to="#" className="text-sm text-blue-400 underline">
-                Explore Category →
+                Jelajahi Kategori →
               </Link>
             </div>
           ))}
         </div>
 
         <div className="bg-blue-700 text-white py-12 px-6 rounded-xl">
-          <p className="text-green-300 font-semibold mb-2">Services</p>
+          <p className="text-green-300 font-semibold mb-2">Layanan</p>
           <h3 className="text-2xl md:text-3xl font-bold mb-8">
-            Comprehensive Pharmacy Services
+            Layanan Apotek Lengkap
           </h3>
           <p className="max-w-lg mb-10">
-            Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet
-            suscipit nulla. Nullam vitae sit tempus diam.
+            Kami menawarkan layanan kesehatan yang komprehensif mulai dari
+            penebusan resep, pengiriman langsung ke rumah, hingga konsultasi
+            kesehatan dengan tenaga profesional.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
