@@ -14,6 +14,7 @@ const Orders = React.lazy(() => import("./pages/Orders"));
 //Admin
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
+const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const Products = React.lazy(() => import("./pages/Products"));
 const Notes = React.lazy(() => import("./pages/Notes"));
@@ -72,6 +73,8 @@ function App() {
 
           {/* Route untuk halaman Produk */}
           <Route path="/products" element={<ProductsLanding />} />
+          {/* <Route path="/products" element={<ProductObat />} /> */}
+        <Route path="/product/:id" element={<DetailProduct />} />
 
           {/* Route untuk halaman About */}
           <Route path="/about" element={<AboutClinic />} />

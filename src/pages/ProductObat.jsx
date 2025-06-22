@@ -1,38 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const products = [
-  {
-    name: "Acetaminophen Pills",
-    oldPrice: "$18.00",
-    newPrice: "$12.00",
-  },
-  {
-    name: "Throat Lozenges Syrup",
-    oldPrice: "$18.00",
-    newPrice: "$12.00",
-  },
-  {
-    name: "Multivitamin B6+",
-    oldPrice: "$18.00",
-    newPrice: "$12.00",
-  },
-];
+import medicines from "../data/medicine.json";
 
 const categories = [
-  "Pereda Nyeri",
-  "Obat Alergi",
-  "Perlengkapan P3K",
-  "Perawatan Gigi",
+  "Generic Medicine",
+  "Diabetes",
+  "Pain Relief",
+  "First Aid"
 ];
 
 const services = [
   "Penebusan Resep",
   "Pengantaran ke Rumah",
-  "Konsultasi Kesehatan",
+  "Konsultasi Kesehatan"
 ];
 
-export default function ProductsPage() {
+export default function ProductObat() {
   return (
     <div className="bg-blue-100 text-black">
       <section className="container mx-auto px-4 py-12">
@@ -45,22 +28,20 @@ export default function ProductsPage() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="bg-black h-64 rounded-xl text-white flex flex-col justify-between p-4"
+          {medicines.slice(0, 3).map((medicine) => (
+            <Link 
+              key={medicine.id}
+              to={`/product/${medicine.id}`}
+              className="bg-black h-64 rounded-xl text-white flex flex-col justify-between p-4 hover:shadow-lg transition-shadow"
             >
               <div></div>
               <div>
-                <h3 className="text-lg font-medium">{product.name}</h3>
+                <h3 className="text-lg font-medium">{medicine.name}</h3>
                 <div className="text-sm">
-                  <span className="line-through text-gray-400 mr-2">
-                    {product.oldPrice}
-                  </span>
-                  <span className="text-blue-600">{product.newPrice}</span>
+                  <span className="text-blue-600">Stok: {medicine.stock}</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
