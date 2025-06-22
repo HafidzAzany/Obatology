@@ -96,7 +96,7 @@ export default function ProductsPage() {
                 className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-end"
               >
                 <p className="text-sm font-medium">
-                  0{idx + 1}. {service}
+                  {idx + 1}. {service}
                 </p>
               </div>
             ))}

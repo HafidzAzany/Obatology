@@ -1,3 +1,7 @@
+import facebookIcon from "../../assets/icons/facebook.png";
+import instagramIcon from "../../assets/icons/instagram.png";
+import twitterIcon from "../../assets/icons/twitter.png";
+
 export default function FooterLanding() {
   return (
     <footer className="bg-[#03061f] text-white py-10">
@@ -40,22 +44,28 @@ export default function FooterLanding() {
           <h4 className="font-semibold mb-2">Ikuti Kami</h4>
           <div className="flex space-x-3">
             <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-600 transition"
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center rounded-full  hover:bg-cyan-600 transition"
             >
-              FB
+              <img src={instagramIcon} alt="Instagram" className="w-11 h-7" />
             </a>
             <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-600 transition"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center rounded-full  hover:bg-cyan-600 transition"
             >
-              IG
+              <img src={twitterIcon} alt="Twitter" className="w-11 h-8.5" />
             </a>
             <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-600 transition"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center rounded-full  hover:bg-cyan-600 transition"
             >
-              X
+              <img src={facebookIcon} alt="Facebook" className="w-6 h-6" />
             </a>
           </div>
         </div>

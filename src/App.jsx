@@ -28,7 +28,7 @@ import Loading from "./components/Loading.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
 
 //ProductsLanding
-import ProductsLanding from "./pages/ProductsObat.jsx";
+import ProductsLanding from "./pages/ProductObat.jsx";
 
 //AboutClinic
 import AboutClinic from "./pages/AboutClinic";
@@ -75,6 +75,8 @@ function App() {
 
           {/* Route untuk halaman About */}
           <Route path="/about" element={<AboutClinic />} />
+
+          
 
           {/* <Route path="/orders" element={<Orders />} />
           <Route path="/formorders" element={<FormOrders />} />

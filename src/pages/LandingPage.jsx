@@ -5,7 +5,7 @@ import {
   FaGift,
   FaHeadset,
 } from "react-icons/fa";
-import ProductsLanding from "./ProductsObat";
+import ProductsLanding from "./ProductObat";
 
 export default function LandingPage() {
   return (
@@ -66,7 +66,7 @@ export default function LandingPage() {
       </section>
 
       {/* Penawaran */}
-      <section className="bg-[#f5f7fb] py-16">
+      <section id="promo" className="bg-[#f5f7fb] py-16">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8">
           {/* Promo 50% Off */}
           <div className="bg-[#e6eeff] rounded-xl p-8 md:flex items-center justify-between">
@@ -113,7 +113,7 @@ export default function LandingPage() {
       </section>
 
       {/* Produk Unggulan */}
-      <section className="bg-white text-black py-16">
+      <section id="products" className="bg-white text-black py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Produk Unggulan Apotek</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -138,7 +138,7 @@ export default function LandingPage() {
       </section>
 
       {/* Kenapa Kami */}
-      <section className="bg-white py-16 text-black">
+      <section id="whyus"className="bg-white py-16 text-black">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">
@@ -182,7 +182,7 @@ export default function LandingPage() {
                 className="bg-white text-blue-800 p-6 rounded-xl"
               >
                 <p className="font-bold">
-                  0{idx + 1}. {service}
+                  {idx + 1}. {service}
                 </p>
               </div>
             ))}
