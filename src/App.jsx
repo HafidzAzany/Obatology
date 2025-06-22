@@ -8,16 +8,11 @@ import React from "react";
 //Dashoard
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 
-const Customers = React.lazy(() => import("./pages/Customers"));
-const FormCustomers = React.lazy(() => import("./pages/FormCustomers"));
-const Orders = React.lazy(() => import("./pages/Orders"));
 //Admin
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const Products = React.lazy(() => import("./pages/Products"));
-const Notes = React.lazy(() => import("./pages/Notes"));
-const FormOrders = React.lazy(() => import("./pages/FormOrders"));
 const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));

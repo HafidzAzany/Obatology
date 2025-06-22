@@ -1,21 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import acetaminophenImg from "../assets/obat/acetaminophen.png";
+import lozengesImg from "../assets/obat/lozenges.png";
+import multivitaminImg from "../assets/obat/multivitamin.png";
+
 const products = [
   {
     name: "Acetaminophen Pills",
     oldPrice: "$18.00",
     newPrice: "$12.00",
+    image: acetaminophenImg,
   },
   {
     name: "Throat Lozenges Syrup",
     oldPrice: "$18.00",
     newPrice: "$12.00",
+    image: lozengesImg,
   },
   {
     name: "Multivitamin B6+",
     oldPrice: "$18.00",
     newPrice: "$12.00",
+    image: multivitaminImg,
   },
 ];
 
@@ -44,28 +51,32 @@ export default function ProductsPage() {
           mudah di sini.
         </p>
 
+        {/* Produk */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
           {products.map((product) => (
             <div
               key={product.name}
-              className="bg-black h-64 rounded-xl text-white flex flex-col justify-between p-4"
+              className="bg-white rounded-xl shadow text-black p-4"
             >
-              <div></div>
-              <div>
-                <h3 className="text-lg font-medium">{product.name}</h3>
-                <div className="text-sm">
-                  <span className="line-through text-gray-400 mr-2">
-                    {product.oldPrice}
-                  </span>
-                  <span className="text-blue-600">{product.newPrice}</span>
-                </div>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-32 object-cover rounded mb-3"
+              />
+              <h3 className="text-lg font-medium">{product.name}</h3>
+              <div className="text-sm">
+                <span className="line-through text-gray-500 mr-2">
+                  {product.oldPrice}
+                </span>
+                <span className="text-blue-600">{product.newPrice}</span>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Kategori */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {categories.map((category, idx) => (
+          {categories.map((category) => (
             <div
               key={category}
               className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-between"
@@ -78,6 +89,7 @@ export default function ProductsPage() {
           ))}
         </div>
 
+        {/* Layanan */}
         <div className="bg-blue-700 text-white py-12 px-6 rounded-xl">
           <p className="text-green-300 font-semibold mb-2">Layanan</p>
           <h3 className="text-2xl md:text-3xl font-bold mb-8">
