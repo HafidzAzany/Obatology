@@ -6,6 +6,7 @@ import {
   FaHeadset,
 } from "react-icons/fa";
 import ProductsLanding from "./ProductObat";
+import bannerImage from "../assets/banner1.png"; // sesuaikan path-nya
 
 export default function LandingPage() {
   return (
@@ -25,7 +26,13 @@ export default function LandingPage() {
               Belanja Sekarang
             </button>
           </div>
-          <div className="bg-gray-300 h-64 md:h-80 rounded-xl"></div>
+          <div className="bg-gray-300 h-64 md:h-80 rounded-xl">
+            <img
+              src={bannerImage}
+              alt="Banner"
+              className="h-64 md:h-80 w-full object-cover rounded-xl"
+            />
+          </div>
         </div>
       </section>
 
@@ -138,7 +145,7 @@ export default function LandingPage() {
       </section>
 
       {/* Kenapa Kami */}
-      <section id="whyus"className="bg-white py-16 text-black">
+      <section id="whyus" className="bg-white py-16 text-black">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">
