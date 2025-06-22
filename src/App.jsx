@@ -11,7 +11,9 @@ const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Customers = React.lazy(() => import("./pages/Customers"));
 const FormCustomers = React.lazy(() => import("./pages/FormCustomers"));
 const Orders = React.lazy(() => import("./pages/Orders"));
+//Admin
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
+const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const Products = React.lazy(() => import("./pages/Products"));
 const Notes = React.lazy(() => import("./pages/Notes"));
@@ -30,6 +32,7 @@ import ProductsLanding from "./pages/ProductsObat.jsx";
 
 //AboutClinic
 import AboutClinic from "./pages/AboutClinic";
+// import MedicineGroup from "./pages/MedicineGroup.jsx";
 
 const ListUser = React.lazy(() => import("./pages/User"));
 const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
@@ -47,6 +50,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/obat" element={<MedicineList />} />
+          <Route path="/grup" element={<MedicineGroup />} />
           <Route path="/inventory" element={<Inventory />} />
         </Route>
 

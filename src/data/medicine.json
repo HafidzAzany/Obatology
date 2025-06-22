@@ -1,0 +1,50 @@
+[
+    {
+      "name": "Augmentin 625 Duo Tablet",
+      "id": "D061D232435454",
+      "group": "Generic Medicine",
+      "stock": 350
+    },
+    {
+      "name": "Azithral 500 Tablet",
+      "id": "D061D232435451",
+      "group": "Generic Medicine",
+      "stock": 20
+    },
+    {
+      "name": "Ascoril LS Syrup",
+      "id": "D061D232435452",
+      "group": "Diabetes",
+      "stock": 85
+    },
+    {
+      "name": "Azee 500 Tablet",
+      "id": "D061D232435450",
+      "group": "Generic Medicine",
+      "stock": 75
+    },
+    {
+      "name": "Allegra 120mg Tablet",
+      "id": "D061D232435455",
+      "group": "Diabetes",
+      "stock": 44
+    },
+    {
+      "name": "Alex Syrup",
+      "id": "D061D232435456",
+      "group": "Generic Medicine",
+      "stock": 65
+    },
+    {
+      "name": "Amoxyclav 625 Tablet",
+      "id": "D061D232435457",
+      "group": "Generic Medicine",
+      "stock": 150
+    },
+    {
+      "name": "Avil 25 Tablet",
+      "id": "D061D232435458",
+      "group": "Generic Medicine",
+      "stock": 270
+    }
+  ]
