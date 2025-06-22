@@ -47,7 +47,7 @@ export default function ListMenu() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/obat/groups" className={menuClass}>
+              <NavLink to="/grup" className={menuClass}>
                 Medicine Groups
               </NavLink>
             </li>

@@ -1,62 +1,14 @@
 import React from "react";
-
-const medicines = [
-  {
-    name: "Augmentin 625 Duo Tablet",
-    id: "D061D232435454",
-    group: "Generic Medicine",
-    stock: 350,
-  },
-  {
-    name: "Azithral 500 Tablet",
-    id: "D061D232435451",
-    group: "Generic Medicine",
-    stock: 20,
-  },
-  {
-    name: "Ascoril LS Syrup",
-    id: "D061D232435452",
-    group: "Diabetes",
-    stock: 85,
-  },
-  {
-    name: "Azee 500 Tablet",
-    id: "D061D232435450",
-    group: "Generic Medicine",
-    stock: 75,
-  },
-  {
-    name: "Allegra 120mg Tablet",
-    id: "D061D232435455",
-    group: "Diabetes",
-    stock: 44,
-  },
-  {
-    name: "Alex Syrup",
-    id: "D061D232435456",
-    group: "Generic Medicine",
-    stock: 65,
-  },
-  {
-    name: "Amoxyclav 625 Tablet",
-    id: "D061D232435457",
-    group: "Generic Medicine",
-    stock: 150,
-  },
-  {
-    name: "Avil 25 Tablet",
-    id: "D061D232435458",
-    group: "Generic Medicine",
-    stock: 270,
-  },
-];
+import medicines from "../data/medicine.json"; // Import the JSON data
 
 const MedicineList = () => {
   return (
     <div className="p-6 bg-white min-h-screen">
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h2 className="text-xl font-semibold text-gray-700">Inventory › <span className="text-black">List of Medicines (298)</span></h2>
+          <h2 className="text-xl font-semibold text-gray-700">
+            Inventory › <span className="text-black">List of Medicines (298)</span>
+          </h2>
           <p className="text-sm text-gray-500">List of medicines available for sales.</p>
         </div>
         <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
@@ -107,11 +59,13 @@ const MedicineList = () => {
         </table>
 
         <div className="text-sm text-gray-600 mt-4">
-          Showing 1 - 8 results of 298
+          Showing 1 - {medicines.length} results of 298
         </div>
 
         <div className="mt-2">
-          <button className="border border-gray-300 px-3 py-1 rounded text-sm">Page 01 ▼</button>
+          <button className="border border-gray-300 px-3 py-1 rounded text-sm">
+            Page 01 ▼
+          </button>
         </div>
       </div>
     </div>
