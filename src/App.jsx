@@ -5,10 +5,8 @@ import "./assets/tailwind.css";
 import { Route, Routes } from "react-router-dom";
 import React from "react";
 
-//Dashoard
+//Dashoard & Admin
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-
-//Admin
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
@@ -22,27 +20,22 @@ const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 import Loading from "./components/Loading.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
+// import ListUser from "./pages/ListUser"; // ERROR DATA USER IKI
+// const ListUser = React.lazy(() => import("./pages/User"));
 
-//ProductsLanding
-import ProductsLanding from "./pages/ProductObat.jsx";
-
-//AboutClinic
-import AboutClinic from "./pages/AboutClinic";
-// import MedicineGroup from "./pages/MedicineGroup.jsx";
-
-const ListUser = React.lazy(() => import("./pages/User"));
-const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
-const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
-
-//PROJECT
+//Landing Guest
 const LandingPage = React.lazy(() => import("./pages/LandingPage"));
 const LandingLayout = React.lazy(() => import("./layouts/LandingLayout"));
+import ProductsLanding from "./pages/ProductObat.jsx";
+import AboutClinic from "./pages/AboutClinic";
+const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
 
 function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        {/* Route untuk halaman Dashboard */}
+        {/* Route Admin */}
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/obat" element={<MedicineList />} />
@@ -61,47 +54,22 @@ function App() {
           }
         />
 
-        {/* Route untuk halaman LandingPage */}
+        {/* Route Guest */}
         <Route element={<LandingLayout />}>
           {/* Route untuk halaman LandingPage */}
           <Route path="/" element={<LandingPage />} />
-
           {/* Route untuk halaman Produk */}
           <Route path="/products" element={<ProductsLanding />} />
           {/* <Route path="/products" element={<ProductObat />} /> */}
-        <Route path="/product/:id" element={<DetailProduct />} />
-
+          <Route path="/product/:id" element={<DetailProduct />} />
           {/* Route untuk halaman About */}
           <Route path="/about" element={<AboutClinic />} />
+          {/* Route untuk halaman Data User */}
 
-          
+          {/* <Route path="/ListUser" element={<ListUser />} />*/}
 
-          {/* <Route path="/orders" element={<Orders />} />
-          <Route path="/formorders" element={<FormOrders />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/formcustomers" element={<FormCustomers />} /> */}
           <Route
-            path="/400"
-            element={
-              <ErrorPage
-                kode="400"
-                deskripsi="Halaman ini masih dalam maintanence"
-                img="./img/Error400.jpg"
-              />
-            }
-          />
-          <Route
-            path="/401"
-            element={
-              <ErrorPage
-                kode="401"
-                deskripsi="Halaman ini masih dalam maintanence"
-                img="./img/Error401.jpg"
-              />
-            }
-          />
-          <Route
-            path="/403"
+            path="/*"
             element={
               <ErrorPage
                 kode="403"
@@ -110,11 +78,9 @@ function App() {
               />
             }
           />
-          {/* <Route path="/ListUser" element={<ListUser />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/notes" element={<Notes />} /> */}
         </Route>
+
+        {/* Halaman Auth */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

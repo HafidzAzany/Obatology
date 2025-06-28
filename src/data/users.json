@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "dr. Siti Rahma",
+    "email": "siti@klinik.com",
+    "role": "Dokter",
+    "phone": "081234567890"
+  },
+  {
+    "id": 2,
+    "name": "Budi Santoso",
+    "email": "budi@klinik.com",
+    "role": "Apoteker",
+    "phone": "085612345678"
+  },
+  {
+    "id": 3,
+    "name": "Andi Wijaya",
+    "email": "andi@klinik.com",
+    "role": "Admin",
+    "phone": "082212341234"
+  }
+]

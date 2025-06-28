@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import medicines from "../data/medicine.json";
+import paracetamolImg from "../assets/obat/lozenges.png";
+import ibuprofenImg from "../assets/obat/acetaminophen.png";
+import amoxicillinImg from "../assets/obat/multivitamin.png";
 
 const categories = [
   "Generic Medicine",
