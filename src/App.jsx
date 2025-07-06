@@ -8,7 +8,10 @@ import React from "react";
 //Dashoard & Admin
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const MedicineList = React.lazy(() => import("./pages/MedicineList"));
+const TambahObat = React.lazy(() => import("./pages/TambahObat"));
+const EditObat = React.lazy(() => import("./pages/EditObat"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
+const GroupDetail = React.lazy(() => import("./pages/GroupDetail"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const Products = React.lazy(() => import("./pages/Products"));
@@ -39,7 +42,11 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/obat" element={<MedicineList />} />
+          <Route path="/tambah-obat" element={<TambahObat />} />
+          <Route path="/edit-obat/:id" element={<EditObat />} />
+          <Route path="*" element={<MedicineList />} />
           <Route path="/grup" element={<MedicineGroup />} />
+          <Route path="/group-detail" element={<GroupDetail />} />
           <Route path="/inventory" element={<Inventory />} />
         </Route>
 
