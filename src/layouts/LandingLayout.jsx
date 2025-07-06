@@ -4,12 +4,14 @@ import FooterLanding from "../components/ComponentsGuest/FooterLanding";
 
 export default function LandingLayout() {
   return (
-    <div className="bg-[#050827] text-white min-h-screen flex flex-col">
-      <NavBarLanding />
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-      <FooterLanding />
+    <div data-aos="fade-down">
+      <div className="bg-[#050827] text-white min-h-screen flex flex-col">
+        <NavBarLanding />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <FooterLanding />
+      </div>
     </div>
   );
 }

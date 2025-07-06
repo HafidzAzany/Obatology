@@ -14,7 +14,6 @@ const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
 const GroupDetail = React.lazy(() => import("./pages/GroupDetail"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
-const Products = React.lazy(() => import("./pages/Products"));
 const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
@@ -31,10 +30,16 @@ const LandingPage = React.lazy(() => import("./pages/LandingPage"));
 const LandingLayout = React.lazy(() => import("./layouts/LandingLayout"));
 import ProductsLanding from "./pages/ProductObat.jsx";
 import AboutClinic from "./pages/AboutClinic";
-const NavBar = React.lazy(() => import("./components/ComponentsGuest/NavBar"));
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
