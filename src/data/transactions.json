@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TRX001",
+    "tanggal": "2024-06-01",
+    "namaObat": "Paracetamol",
+    "jenis": "Masuk",
+    "jumlah": 100,
+    "unit": "tablet",
+    "supplier": "PT. Farma Jaya",
+    "keterangan": "Pembelian rutin"
+  },
+  {
+    "id": "TRX002",
+    "tanggal": "2024-06-05",
+    "namaObat": "Amoxicillin",
+    "jenis": "Masuk",
+    "jumlah": 50,
+    "unit": "kapsul",
+    "supplier": "CV. Sehat Selalu",
+    "keterangan": "Restok"
+  },
+  {
+    "id": "TRX003",
+    "tanggal": "2024-06-10",
+    "namaObat": "Paracetamol",
+    "jenis": "Keluar",
+    "jumlah": 20,
+    "unit": "tablet",
+    "customer": "Pasien A",
+    "keterangan": "Penjualan"
+  },
+  {
+    "id": "TRX004",
+    "tanggal": "2024-06-12",
+    "namaObat": "Vitamin C",
+    "jenis": "Masuk",
+    "jumlah": 200,
+    "unit": "tablet",
+    "supplier": "PT. Vita Sehat",
+    "keterangan": "Pembelian baru"
+  },
+  {
+    "id": "TRX005",
+    "tanggal": "2024-06-15",
+    "namaObat": "Amoxicillin",
+    "jenis": "Keluar",
+    "jumlah": 10,
+    "unit": "kapsul",
+    "customer": "Pasien B",
+    "keterangan": "Penjualan"
+  }
+]

@@ -1,23 +1,33 @@
 [
   {
     "id": 1,
-    "name": "dr. Siti Rahma",
-    "email": "siti@klinik.com",
-    "role": "Dokter",
-    "phone": "081234567890"
+    "username": "dani_admin",
+    "email": "dani@klinik.com",
+    "role": "admin",
+    "name": "Dani Prakoso",
+    "phone": "08123456789"
   },
   {
     "id": 2,
-    "name": "Budi Santoso",
-    "email": "budi@klinik.com",
-    "role": "Apoteker",
-    "phone": "085612345678"
+    "username": "hafidz_guest",
+    "email": "hafidz@klinik.com",
+    "role": "guest",
+    "name": "Hafidz Azany",
+    "phone": "08987654321"
   },
   {
     "id": 3,
-    "name": "Andi Wijaya",
-    "email": "andi@klinik.com",
-    "role": "Admin",
-    "phone": "082212341234"
+    "username": "fitri_pekerja",
+    "email": "fitri@klinik.com",
+    "role": "pekerja_klinik", 
+    "name": "Fitriana Dewi",
+    "phone": "08112233445"
+  },
+  {
+    "id": 4,
+    "username": "budi_pekerja",
+    "email": "budi@klinik.com",
+    "role": "pekerja_klinik", 
+    "phone": "08556677889"
   }
 ]
