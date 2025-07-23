@@ -6,9 +6,19 @@ const DetailProduct = () => {
   const { id } = useParams();
   const product = medicines.find((med) => med.id === id);
 
+  
+  const productDetailImages = {
+    "Augmentin 625 Duo Tablet": "https://th.bing.com/th/id/OIP.Th-tOf3ZHXk0xKTINnvtwAHaHa?w=158&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+    "Azithral 500 Tablet": "https://th.bing.com/th/id/OIP._OQxU__KSN6QwXMPWhq2wAHaHa?w=196&h=196&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+    "Ascoril LS Syrup": "https://th.bing.com/th/id/OIP.BtO5brgMH1WU6F5K5NK3VQHaHa?w=188&h=188&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3", // <--- Tambahan baru
+  };
+
   if (!product) {
     return <div className="p-6 text-center">Produk tidak ditemukan</div>;
   }
+
+ 
+  const imageUrl = productDetailImages[product.name];
 
   return (
     <div data-aos="fade-right">
@@ -21,8 +31,17 @@ const DetailProduct = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-100 rounded-lg h-64 md:h-96 flex items-center justify-center">
-              <span className="text-gray-400">Gambar Produk</span>
+            {/* Bagian gambar produk */}
+            <div className="bg-gray-100 rounded-lg h-64 md:h-96 flex items-center justify-center overflow-hidden">
+              {imageUrl ? (
+                <img
+                  src={imageUrl}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="text-gray-400">Gambar Produk Tidak Tersedia</span>
+              )}
             </div>
 
             <div>

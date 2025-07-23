@@ -59,8 +59,15 @@ export default function AboutClinic() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+            {/* Dr. Emily Roberts */}
             <div>
-              <div className="bg-gray-800 h-60 mb-4 rounded-xl"></div>
+              <div className="bg-gray-800 h-60 mb-4 rounded-xl flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/C5103AQHHQvEV2SVDjg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516240824673?e=1756339200&v=beta&t=Ey_m5EDQjFVYRXrf6tJbwL3lHy-_b9m-pgK1uipmRnM"
+                  alt="Foto Dr. Emily Roberts"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="inline-block bg-gray-200 text-xs px-3 py-1 rounded-full mb-2">
                 Apoteker Utama
               </span>
@@ -69,8 +76,16 @@ export default function AboutClinic() {
                 Pengalaman kerja - 15 tahun
               </p>
             </div>
+
+            {/* Dr. Michael Chang, MD */}
             <div>
-              <div className="bg-gray-800 h-60 mb-4 rounded-xl"></div>
+              <div className="bg-gray-800 h-60 mb-4 rounded-xl flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://a.mktgcdn.com/p/iY6VMJsHQZf_0OVoo3_mcjWj_rh6RJBCXKgcChybJ8Q/2848x2848.jpg"
+                  alt="Foto Dr. Michael Chang"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="inline-block bg-gray-200 text-xs px-3 py-1 rounded-full mb-2">
                 Penasihat Medis
               </span>
@@ -79,8 +94,16 @@ export default function AboutClinic() {
                 Pengalaman kerja - 12 tahun
               </p>
             </div>
+
+            {/* Lisa Davis, RN, BSN */}
             <div>
-              <div className="bg-gray-800 h-60 mb-4 rounded-xl"></div>
+              <div className="bg-gray-800 h-60 mb-4 rounded-xl flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/C4D03AQH0IHZupIJsmA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1648686655487?e=1756339200&v=beta&t=WCUCM3MQr06rqhw3cUKRhpM12hTErq444J2UeuIRO4I"
+                  alt="Foto Lisa Davis"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="inline-block bg-gray-200 text-xs px-3 py-1 rounded-full mb-2">
                 Direktur Layanan Kesehatan
               </span>

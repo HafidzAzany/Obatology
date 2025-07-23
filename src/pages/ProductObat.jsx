@@ -11,6 +11,29 @@ const services = [
 ];
 
 export default function ProductObat() {
+  // Objek untuk menyimpan link gambar berdasarkan nama produk (untuk produk unggulan)
+  const productImages = {
+    "Augmentin 625 Duo Tablet": "https://th.bing.com/th/id/OIP.Th-tOf3ZHXk0xKTINnvtwAHaHa?w=158&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+    "Azithral 500 Tablet": "https://th.bing.com/th/id/OIP._OQxU__KSN6QwXMPWhq2wAHaHa?w=196&h=196&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+    "Ascoril LS Syrup": "https://th.bing.com/th/id/OIP.BtO5brgMH1WU6F5K5NK3VQHaHa?w=188&h=188&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+  };
+
+  // Objek untuk menyimpan link gambar berdasarkan nama kategori
+  const categoryImages = {
+    "Generic Medicine": "https://tse1.mm.bing.net/th/id/OIP.b1AIPW3THOpreN7DhVty5gHaFj?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Diabetes": "https://hopkinsdiabetesinfo.org/wp-content/uploads/2016/03/Type-2-diabetes-sequencing-therapies-62428694_Double-1080x675.jpg",
+    "Pain Relief": "https://th.bing.com/th/id/OIP.CDNxC9DSsH0wcMu7v10iOgHaDt?w=276&h=174&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+    "First Aid": "https://firstaidsuppliesonline.com/wp-content/uploads/2021/09/first-aid-kit-1-1024x587.jpeg",
+  };
+
+  // Objek untuk menyimpan link gambar berdasarkan nama layanan
+  const serviceImages = {
+    "Penebusan Resep": "https://png.pngtree.com/png-clipart/20220909/original/pngtree-pharmacist-giving-medicine-pills-to-patient-another-hand-png-image_8520197.png",
+    "Pengantaran ke Rumah": "https://tse2.mm.bing.net/th/id/OIP.7lFG85hiJA7dmLniqqpL0wHaCX?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Konsultasi Kesehatan": "https://th.bing.com/th/id/OIP.kZ-irDQfN14r6VXcuJI4YgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+  };
+
+
   return (
     <div className="bg-blue-100 text-black">
       <section className="container mx-auto px-4 py-12">
@@ -28,31 +51,69 @@ export default function ProductObat() {
               <Link
                 key={medicine.id}
                 to={`/product/${medicine.id}`}
-                className="bg-black h-64 rounded-xl text-white flex flex-col justify-between p-4 hover:shadow-lg transition-shadow"
+                className="bg-black h-64 rounded-xl text-white flex flex-col justify-between p-4 hover:shadow-lg transition-shadow relative overflow-hidden"
               >
-                <div></div>
-                <div>
-                  <h3 className="text-lg font-medium">{medicine.name}</h3>
-                  <div className="text-sm">
-                    <span className="text-blue-600">
-                      Stok: {medicine.stock}
-                    </span>
+                {/* Bagian untuk gambar produk unggulan */}
+                <div className="absolute inset-0">
+                  {productImages[medicine.name] ? (
+                    <img
+                      src={productImages[medicine.name]}
+                      alt={medicine.name}
+                      className="w-full h-full object-cover opacity-70"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-700 text-gray-300">
+                      {/* Placeholder teks jika tidak ada gambar */}
+                      Gambar Belum Tersedia
+                    </div>
+                  )}
+                </div>
+
+                {/* Konten di atas gambar (agar terlihat) */}
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <div></div> {/* Div kosong untuk menjaga layout */}
+                  <div>
+                    <h3 className="text-lg font-medium">{medicine.name}</h3>
+                    <div className="text-sm">
+                      <span className="text-blue-600">
+                        Stok: {medicine.stock}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
 
+          {/* Bagian Kategori */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {categories.map((category, idx) => (
               <div
                 key={category}
-                className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-between"
+                className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-between relative overflow-hidden"
               >
-                <div className="text-lg font-semibold">{category}</div>
-                <Link to="#" className="text-sm text-blue-400 underline">
-                  Jelajahi Kategori →
-                </Link>
+                {/* Gambar untuk Kategori */}
+                <div className="absolute inset-0">
+                    {categoryImages[category] ? (
+                        <img
+                            src={categoryImages[category]}
+                            alt={category}
+                            className="w-full h-full object-cover opacity-50"
+                        />
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gray-700 text-gray-300">
+                            Gambar Kategori Belum Tersedia
+                        </div>
+                    )}
+                </div>
+
+                {/* Konten teks kategori di atas gambar */}
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div className="text-lg font-semibold">{category}</div>
+                    <Link to="#" className="text-sm text-blue-400 underline">
+                        Jelajahi Kategori →
+                    </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -72,11 +133,29 @@ export default function ProductObat() {
               {services.map((service, idx) => (
                 <div
                   key={idx}
-                  className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-end"
+                  className="bg-black rounded-xl h-48 p-6 text-white flex flex-col justify-end relative overflow-hidden"
                 >
-                  <p className="text-sm font-medium">
-                    {idx + 1}. {service}
-                  </p>
+                  {/* Gambar untuk Layanan */}
+                  <div className="absolute inset-0">
+                      {serviceImages[service] ? (
+                          <img
+                              src={serviceImages[service]}
+                              alt={service}
+                              className="w-full h-full object-cover opacity-50"
+                          />
+                      ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-700 text-gray-300">
+                              Gambar Layanan Belum Tersedia
+                          </div>
+                      )}
+                  </div>
+
+                  {/* Konten teks layanan di atas gambar */}
+                  <div className="relative z-10">
+                    <p className="text-sm font-medium">
+                      {idx + 1}. {service}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

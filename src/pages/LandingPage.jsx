@@ -205,7 +205,14 @@ export default function LandingPage() {
                 <p className="text-sm text-gray-600">Kemasan berkelanjutan</p>
               </div>
             </div>
-            <div className="bg-gray-300 h-64 rounded-xl"></div>
+            {/* Bagian gambar untuk "Komitmen Kami terhadap Kualitas" */}
+            <div className="bg-gray-300 h-64 rounded-xl flex items-center justify-center overflow-hidden">
+              <img
+                src="https://www.purobien.com/upload/lab-image.jpg" // <--- Link gambar diubah di sini
+                alt="Quality Control Laboratory"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
