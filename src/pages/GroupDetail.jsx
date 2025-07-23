@@ -6,18 +6,26 @@ import EmptyState from "../components/EmptyState";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 export default function GroupDetail() {
-  const { groupName } = useParams();
+  const { groupName } = useParams(); // sekarang groupName adalah ID grup
+  const [groupNama, setGroupNama] = useState("");
   const [medicines, setMedicines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const loadMedicines = async () => {
+  const loadData = async () => {
     try {
       setLoading(true);
-      const data = await obatAPI.fetchObat();
-      const filtered = data.filter(obat => obat.jenis === groupName);
-      setMedicines(filtered);
+      const obatData = await obatAPI.fetchObat();
+      const grupData = await obatAPI.fetchGrupObat();
+
+      const grup = grupData.find((g) => g.id === parseInt(groupName));
+      if (!grup) throw new Error("Grup tidak ditemukan");
+
+      const filteredObat = obatData.filter((obat) => obat.grup_id === grup.id);
+
+      setGroupNama(grup.nama_grup);
+      setMedicines(filteredObat);
     } catch (err) {
       setError("Gagal memuat data obat.");
     } finally {
@@ -30,7 +38,7 @@ export default function GroupDetail() {
     try {
       setLoading(true);
       await obatAPI.deleteObat(id);
-      loadMedicines();
+      await loadData();
     } catch (err) {
       setError("Gagal menghapus obat.");
     } finally {
@@ -39,13 +47,13 @@ export default function GroupDetail() {
   };
 
   useEffect(() => {
-    loadMedicines();
+    loadData();
   }, [groupName]);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold">Group: {groupName}</h2>
+        <h2 className="text-3xl font-bold">Group: {groupNama}</h2>
         <button
           onClick={() => navigate(-1)}
           className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded-xl shadow"

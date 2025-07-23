@@ -11,6 +11,7 @@ const MedicineList = React.lazy(() => import("./pages/MedicineList"));
 const TambahObat = React.lazy(() => import("./pages/TambahObat"));
 const EditObat = React.lazy(() => import("./pages/EditObat"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
+const TambahGrup = React.lazy(() => import("./pages/TambahGrup"));
 const GroupDetail = React.lazy(() => import("./pages/GroupDetail"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
@@ -51,6 +52,7 @@ function App() {
           <Route path="/edit-obat/:id" element={<EditObat />} />
           <Route path="*" element={<MedicineList />} />
           <Route path="/grup" element={<MedicineGroup />} />
+          <Route path="/tambah-grup" element={<TambahGrup />} />
           <Route path="/group-detail" element={<GroupDetail />} />
           <Route path="/inventory" element={<Inventory />} />
         </Route>

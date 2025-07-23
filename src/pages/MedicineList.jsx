@@ -15,7 +15,7 @@ export default function MedicineList() {
     const loadObat = async () => {
         try {
             setLoading(true);
-            const data = await obatAPI.fetchObat();
+            const data = await obatAPI.fetchObat(); // Sudah include relasi grup
             setObatList(data);
         } catch (err) {
             setError("Gagal memuat data obat.");
@@ -29,7 +29,7 @@ export default function MedicineList() {
         try {
             setLoading(true);
             await obatAPI.deleteObat(id);
-            loadObat(); // Muat ulang data setelah penghapusan berhasil
+            loadObat();
         } catch (err) {
             setError("Gagal menghapus obat.");
         } finally {
@@ -53,40 +53,40 @@ export default function MedicineList() {
                 </button>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200"> {/* Added border */}
-                <div className="px-6 py-4 border-b border-gray-200"> {/* Added border-b */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                <div className="px-6 py-4 border-b border-gray-200">
                     <h3 className="text-lg font-semibold text-gray-700">Daftar Obat ⚕️</h3>
                 </div>
 
                 {loading && <LoadingSpinner text="Memuat data obat..." />}
                 {!loading && error && <EmptyState text={error} />}
-                {!loading && obatList.length === 0 && !error && <EmptyState text="Belum ada data obat." />} {/* Added !error */}
+                {!loading && obatList.length === 0 && !error && <EmptyState text="Belum ada data obat." />}
 
                 {!loading && obatList.length > 0 && (
                     <GenericTable
-                        columns={["#", "Nama Obat", "Jenis", "Jumlah", "Aksi"]} // Tambahkan kolom "Aksi"
+                        columns={["#", "Nama Obat", "Jumlah", "Grup", "Aksi"]}
                         data={obatList}
                         renderRow={(obat, index) => (
                             <>
                                 <td className="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{index + 1}.</td>
                                 <td className="px-6 py-3 text-sm text-gray-900 whitespace-nowrap">{obat.nama_obat}</td>
-                                <td className="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{obat.jenis}</td>
                                 <td className="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{obat.quantity}</td>
+                                <td className="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{obat.grup_obat?.nama_grup || "-"}</td>
                                 <td className="px-6 py-3 whitespace-nowrap text-sm font-medium">
-                                    <div className="flex items-center space-x-2"> {/* Menggunakan flexbox untuk ikon */}
+                                    <div className="flex items-center space-x-2">
                                         <button
                                             onClick={() => navigate(`/edit-obat/${obat.id_obat}`)}
-                                            className="p-1 rounded-full hover:bg-gray-100 transition duration-150 ease-in-out" // Tambahkan styling
+                                            className="p-1 rounded-full hover:bg-gray-100"
                                             title="Edit Obat"
                                         >
-                                            <AiFillEdit className="text-green-500 text-xl hover:text-green-700" /> {/* Ubah ukuran ikon */}
+                                            <AiFillEdit className="text-green-500 text-xl hover:text-green-700" />
                                         </button>
                                         <button
                                             onClick={() => handleDelete(obat.id_obat)}
-                                            className="p-1 rounded-full hover:bg-gray-100 transition duration-150 ease-in-out" // Tambahkan styling
+                                            className="p-1 rounded-full hover:bg-gray-100"
                                             title="Hapus Obat"
                                         >
-                                            <AiFillDelete className="text-red-500 text-xl hover:text-red-700" /> {/* Ubah ukuran ikon */}
+                                            <AiFillDelete className="text-red-500 text-xl hover:text-red-700" />
                                         </button>
                                     </div>
                                 </td>

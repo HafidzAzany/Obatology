@@ -14,25 +14,20 @@ export default function MedicineGroups() {
   const loadGroups = async () => {
     try {
       setLoading(true);
-      const data = await obatAPI.fetchObat();
-      
-      // Group medicines by jenis
-      const grouped = data.reduce((acc, obat) => {
-        if (!acc[obat.jenis]) {
-          acc[obat.jenis] = [];
-        }
-        acc[obat.jenis].push(obat);
-        return acc;
-      }, {});
-      
-      // Convert to array format
-      const groupArray = Object.keys(grouped).map(jenis => ({
-        groupName: jenis,
-        medicines: grouped[jenis],
-        count: grouped[jenis].length
-      }));
-      
-      setGroups(groupArray);
+      const obatData = await obatAPI.fetchObat();
+      const grupData = await obatAPI.fetchGrupObat();
+
+      const grouped = grupData.map((grup) => {
+        const relatedObat = obatData.filter((obat) => obat.grup_id === grup.id);
+        return {
+          groupId: grup.id,
+          groupName: grup.nama_grup,
+          medicines: relatedObat,
+          count: relatedObat.length,
+        };
+      });
+
+      setGroups(grouped);
     } catch (err) {
       setError("Gagal memuat data kelompok obat.");
     } finally {
@@ -44,7 +39,7 @@ export default function MedicineGroups() {
     loadGroups();
   }, []);
 
-  const filteredGroups = groups.filter(group =>
+  const filteredGroups = groups.filter((group) =>
     group.groupName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -53,7 +48,7 @@ export default function MedicineGroups() {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Inventory · Medicine Groups</h2>
         <button
-          onClick={() => navigate("/add-group")}
+          onClick={() => navigate("/tambah-grup")}
           className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl shadow"
         >
           Add New Group
@@ -63,7 +58,7 @@ export default function MedicineGroups() {
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
         <div className="px-6 py-4">
           <h3 className="text-lg font-semibold mb-4">List of medicines groups</h3>
-          
+
           <div className="relative mb-4">
             <input
               type="text"
@@ -94,17 +89,15 @@ export default function MedicineGroups() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredGroups.map((group, index) => (
-                    <tr key={index}>
+                  {filteredGroups.map((group) => (
+                    <tr key={group.groupId}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="font-medium text-gray-900">{group.groupName}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-gray-500">{group.count}</div>
-                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-500">{group.count}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button
-                          onClick={() => navigate(`/group-detail/${group.groupName}`)}
+                          onClick={() => navigate(`/group-detail/${group.groupId}`)}
                           className="text-emerald-600 hover:text-emerald-800 font-medium"
                         >
                           View Full Detail

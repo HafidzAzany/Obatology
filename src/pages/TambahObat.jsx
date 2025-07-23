@@ -1,34 +1,43 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { obatAPI } from "../services/obatAPI"
-import AlertBox from "../components/AlertBox"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { obatAPI } from "../services/obatAPI";
+import AlertBox from "../components/AlertBox";
 
 export default function TambahObat() {
-    const navigate = useNavigate()
-    const [form, setForm] = useState({ nama_obat: "", quantity: "", jenis: "" })
-    const [loading, setLoading] = useState(false)
-    const [success, setSuccess] = useState("")
-    const [error, setError] = useState("")
+    const navigate = useNavigate();
+    const [form, setForm] = useState({ nama_obat: "", quantity: "", jenis: "", grup_id: "" });
+    const [grupList, setGrupList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        const loadGrup = async () => {
+            const data = await obatAPI.fetchGrupObat();
+            setGrupList(data);
+        };
+        loadGrup();
+    }, []);
 
     const handleChange = (e) => {
-        const { name, value } = e.target
-        setForm({ ...form, [name]: value })
-    }
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            setLoading(true)
-            setError("")
-            await obatAPI.createObat(form)
-            setSuccess("Obat berhasil ditambahkan!")
-            setTimeout(() => navigate("/medicine"), 1000)
+            setLoading(true);
+            setError("");
+            await obatAPI.createObat(form);
+            setSuccess("Obat berhasil ditambahkan!");
+            setTimeout(() => navigate("/medicine"), 1000);
         } catch (err) {
-            setError("Gagal menambahkan obat.")
+            setError("Gagal menambahkan obat.");
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
     return (
         <div className="max-w-md mx-auto p-6">
@@ -68,6 +77,19 @@ export default function TambahObat() {
                     className="w-full p-3 border rounded-xl"
                 />
 
+                <select
+                    name="grup_id"
+                    value={form.grup_id}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-3 border rounded-xl"
+                >
+                    <option value="">Pilih Grup Obat</option>
+                    {grupList.map((grup) => (
+                        <option key={grup.id} value={grup.id}>{grup.nama_grup}</option>
+                    ))}
+                </select>
+
                 <div className="flex justify-between">
                     <button
                         type="submit"
@@ -86,5 +108,5 @@ export default function TambahObat() {
                 </div>
             </form>
         </div>
-    )
+    );
 }
