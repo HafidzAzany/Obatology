@@ -70,7 +70,7 @@ export default function ListMenu() {
       </li>
 
       <li>
-        <NavLink to="/ListUser" className={menuClass}>
+        <NavLink to="/user" className={menuClass}>
           <BsPeople className="text-xl mr-3" />
           Data User
         </NavLink>

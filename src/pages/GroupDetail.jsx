@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { obatAPI } from "../services/obatAPI";
+import GenericTable from "../components/GenericTable";
 import LoadingSpinner from "../components/LoadingSpinner";
 import EmptyState from "../components/EmptyState";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 export default function GroupDetail() {
-  const { groupName } = useParams(); // sekarang groupName adalah ID grup
+  const { groupName } = useParams();
   const [groupNama, setGroupNama] = useState("");
   const [medicines, setMedicines] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,8 +17,10 @@ export default function GroupDetail() {
   const loadData = async () => {
     try {
       setLoading(true);
-      const obatData = await obatAPI.fetchObat();
-      const grupData = await obatAPI.fetchGrupObat();
+      const [obatData, grupData] = await Promise.all([
+        obatAPI.fetchObat(),
+        obatAPI.fetchGrupObat(),
+      ]);
 
       const grup = grupData.find((g) => g.id === parseInt(groupName));
       if (!grup) throw new Error("Grup tidak ditemukan");
@@ -55,53 +58,53 @@ export default function GroupDetail() {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Group: {groupNama}</h2>
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/medicine-groups")}
           className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded-xl shadow"
         >
-          Back to Groups
+          Kembali ke Grup
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div className="px-6 py-4">
-          <h3 className="text-lg font-semibold mb-4">Daftar Obat</h3>
-
-          {loading && <LoadingSpinner text="Memuat data obat..." />}
-          {!loading && error && <EmptyState text={error} />}
-          {!loading && medicines.length === 0 && <EmptyState text="Tidak ada obat dalam kelompok ini." />}
-
-          {!loading && medicines.length > 0 && (
-            <div className="overflow-x-auto">
-              <table className="min-w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Obat</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {medicines.map((obat, index) => (
-                    <tr key={obat.id_obat}>
-                      <td className="px-6 py-4 whitespace-nowrap">{index + 1}.</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{obat.nama_obat}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{obat.quantity}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <button onClick={() => navigate(`/edit-obat/${obat.id_obat}`)}>
-                          <AiFillEdit className="text-green-500 text-2xl hover:text-green-700" />
-                        </button>
-                        <button onClick={() => handleDelete(obat.id_obat)} className="ml-2">
-                          <AiFillDelete className="text-red-500 text-2xl hover:text-red-700" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+        <div className="px-6 py-4 border-b border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-700">Daftar Obat dalam Grup</h3>
         </div>
+
+        {loading && <LoadingSpinner text="Memuat data..." />}
+        {!loading && error && <EmptyState text={error} />}
+        {!loading && medicines.length === 0 && <EmptyState text="Tidak ada obat dalam grup ini." />}
+
+        {!loading && medicines.length > 0 && (
+          <GenericTable
+            columns={["#", "Nama Obat", "Jumlah", "Aksi"]}
+            data={medicines}
+            renderRow={(obat, index) => (
+              <>
+                <td className="px-6 py-3 text-sm">{index + 1}.</td>
+                <td className="px-6 py-3 text-sm">{obat.nama_obat}</td>
+                <td className="px-6 py-3 text-sm">{obat.quantity}</td>
+                <td className="px-6 py-3 whitespace-nowrap text-sm font-medium">
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => navigate(`/edit-obat/${obat.id_obat}`)}
+                      className="p-1 rounded-full hover:bg-gray-100"
+                      title="Edit Obat"
+                    >
+                      <AiFillEdit className="text-blue-500 text-xl hover:text-blue-700" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(obat.id_obat)}
+                      className="p-1 rounded-full hover:bg-gray-100"
+                      title="Hapus Obat"
+                    >
+                      <AiFillDelete className="text-red-500 text-xl hover:text-red-700" />
+                    </button>
+                  </div>
+                </td>
+              </>
+            )}
+          />
+        )}
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ export default function MedicineList() {
                 <h2 className="text-3xl font-bold text-gray-800">Manajemen Obat</h2>
                 <button
                     onClick={() => navigate("/tambah-obat")}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl shadow-md transition duration-200 ease-in-out"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-xl shadow-md transition duration-200 ease-in-out"
                 >
                     Tambah Obat
                 </button>
@@ -79,7 +79,7 @@ export default function MedicineList() {
                                             className="p-1 rounded-full hover:bg-gray-100"
                                             title="Edit Obat"
                                         >
-                                            <AiFillEdit className="text-green-500 text-xl hover:text-green-700" />
+                                            <AiFillEdit className="text-blue-500 text-xl hover:text-blue-700" />
                                         </button>
                                         <button
                                             onClick={() => handleDelete(obat.id_obat)}

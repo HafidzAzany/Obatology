@@ -7,7 +7,7 @@ export default function EditObat() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [form, setForm] = useState({ nama_obat: "", quantity: "", jenis: "", grup_id: "" });
+    const [form, setForm] = useState({ nama_obat: "", quantity: "", grup_id: "" });
     const [grupList, setGrupList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
@@ -20,7 +20,6 @@ export default function EditObat() {
             setForm({
                 nama_obat: data.nama_obat || "",
                 quantity: data.quantity || "",
-                jenis: data.jenis || "",
                 grup_id: data.grup_id || ""
             });
         } catch (err) {
@@ -82,16 +81,6 @@ export default function EditObat() {
                     value={form.quantity}
                     onChange={handleChange}
                     placeholder="Jumlah"
-                    required
-                    className="w-full p-3 border rounded-xl"
-                />
-
-                <input
-                    type="text"
-                    name="jenis"
-                    value={form.jenis}
-                    onChange={handleChange}
-                    placeholder="Jenis"
                     required
                     className="w-full p-3 border rounded-xl"
                 />

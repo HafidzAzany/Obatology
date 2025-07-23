@@ -13,6 +13,9 @@ const EditObat = React.lazy(() => import("./pages/EditObat"));
 const MedicineGroup = React.lazy(() => import("./pages/MedicineGroup"));
 const TambahGrup = React.lazy(() => import("./pages/TambahGrup"));
 const GroupDetail = React.lazy(() => import("./pages/GroupDetail"));
+const User = React.lazy(() => import("./pages/User"));
+const TambahUser = React.lazy(() => import("./pages/TambahUser"));
+const EditUser = React.lazy(() => import("./pages/EditUser"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
@@ -53,7 +56,10 @@ function App() {
           <Route path="*" element={<MedicineList />} />
           <Route path="/grup" element={<MedicineGroup />} />
           <Route path="/tambah-grup" element={<TambahGrup />} />
-          <Route path="/group-detail" element={<GroupDetail />} />
+          <Route path="/group-detail/:groupName" element={<GroupDetail />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/tambah-user" element={<TambahUser />} />
+          <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/inventory" element={<Inventory />} />
         </Route>
 

@@ -1,103 +1,102 @@
-import React, { useState, useEffect } from "react";
-import PageHeader from "../components/PageHeader";
+// src/pages/User.jsx
 
-export default function ListUser() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+import { useEffect, useState } from "react";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { obatAPI } from "../services/obatAPI";
+import GenericTable from "../components/GenericTable";
+import LoadingSpinner from "../components/LoadingSpinner";
+import EmptyState from "../components/EmptyState";
 
-  const handleToggleForm = () => {
-    setShowForm((prev) => !prev);
+export default function UserList() {
+  const [userList, setUserList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const loadUsers = async () => {
+    try {
+      setLoading(true);
+      const data = await obatAPI.fetchUsers();
+      setUserList(data);
+    } catch (err) {
+      setError("Gagal memuat data user.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!confirm("Yakin ingin menghapus user ini?")) return;
+    try {
+      setLoading(true);
+      await obatAPI.deleteUser(id);
+      await loadUsers();
+    } catch (err) {
+      setError("Gagal menghapus user.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const res = await fetch("https://dummyjson.com/users");
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const data = await res.json();
-        setUsers(data.users);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchUsers();
+    loadUsers();
   }, []);
 
   return (
-    <div id="dashboard-container" className="p-6 bg-gray-50 min-h-screen">
-      <PageHeader pageTitle="Users" breadcrumb={["Users", "Table Users"]}>
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">Manajemen Pengguna 👤</h2>
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2 hover:bg-green-600 transition"
-          onClick={handleToggleForm}
+          onClick={() => navigate("/tambah-user")}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-xl shadow-md transition duration-200 ease-in-out"
         >
-          {showForm ? "Close" : "Add"}
+          Tambah User
         </button>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
-          Export
-        </button>
-      </PageHeader>
+      </div>
 
-      {showForm && (
-        <div className="bg-white p-4 rounded-lg shadow-lg mt-6">
-          <h3 className="text-lg font-semibold mb-4">Add New User</h3>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="First Name" className="border p-2 rounded" />
-              <input type="text" placeholder="Last Name" className="border p-2 rounded" />
-              <input type="email" placeholder="Email" className="border p-2 rounded" />
-              <input type="tel" placeholder="Phone" className="border p-2 rounded" />
-            </div>
-            <button
-              type="submit"
-              className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-            >
-              Submit
-            </button>
-          </form>
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+        <div className="px-6 py-4 border-b border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-700">Daftar Pengguna</h3>
         </div>
-      )}
 
-      <div className="overflow-x-auto mt-6">
-        {loading ? (
-          <p className="text-center text-gray-600">Loading...</p>
-        ) : error ? (
-          <p className="text-center text-red-500">Error: {error}</p>
-        ) : (
-          <table className="table-auto w-full border-collapse text-sm text-gray-700">
-            <thead>
-              <tr className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-                <th className="border px-6 py-3 text-left">User</th>
-                <th className="border px-6 py-3 text-left">Email</th>
-                <th className="border px-6 py-3 text-left">Age</th>
-                <th className="border px-6 py-3 text-left">Gender</th>
-                <th className="border px-6 py-3 text-left">Birthdate</th>
-                <th className="border px-6 py-3 text-left">Company</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user.id} className="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
-                  <td className="border px-6 py-4 flex items-center space-x-3">
-                    <img
-                      src={user.image}
-                      alt={`${user.firstName} ${user.lastName}`}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <span className="font-semibold text-lg">{user.username}</span>
-                  </td>
-                  <td className="border px-6 py-4">{user.email}</td>
-                  <td className="border px-6 py-4">{user.age}</td>
-                  <td className="border px-6 py-4">{user.gender}</td>
-                  <td className="border px-6 py-4">{user.birthDate}</td>
-                  <td className="border px-6 py-4">{user.company?.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {loading && <LoadingSpinner text="Memuat data user..." />}
+        {!loading && error && <EmptyState text={error} />}
+        {!loading && userList.length === 0 && !error && <EmptyState text="Belum ada data user." />}
+
+        {!loading && userList.length > 0 && (
+          <GenericTable
+            columns={["#", "Nama", "Email", "Posisi", "No HP", "Password", "Aksi"]}
+            data={userList}
+            renderRow={(user, index) => (
+              <>
+                <td className="px-6 py-3 text-sm">{index + 1}.</td>
+                <td className="px-6 py-3 text-sm">{user.nama}</td>
+                <td className="px-6 py-3 text-sm">{user.email}</td>
+                <td className="px-6 py-3 text-sm">{user.posisi}</td>
+                <td className="px-6 py-3 text-sm">{user.nohp}</td>
+                <td className="px-6 py-3 text-sm">••••••••</td>
+                <td className="px-6 py-3 whitespace-nowrap text-sm font-medium">
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => navigate(`/edit-user/${user.id}`)}
+                      className="p-1 rounded-full hover:bg-gray-100"
+                      title="Edit User"
+                    >
+                      <AiFillEdit className="text-blue-500 text-xl hover:text-blue-700" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(user.id)}
+                      className="p-1 rounded-full hover:bg-gray-100"
+                      title="Hapus User"
+                    >
+                      <AiFillDelete className="text-red-500 text-xl hover:text-red-700" />
+                    </button>
+                  </div>
+                </td>
+              </>
+            )}
+          />
         )}
       </div>
     </div>

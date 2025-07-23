@@ -11,8 +11,7 @@ export default function TambahGrup() {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -24,11 +23,11 @@ export default function TambahGrup() {
 
     try {
       setLoading(true);
-      await obatAPI.createGrup(form); // ← mengarah ke API Supabase
-      setSuccess("Grup obat berhasil ditambahkan!");
+      await obatAPI.createGrup(form);
+      setSuccess("Grup berhasil ditambahkan!");
       setTimeout(() => navigate("/medicine-groups"), 1000);
     } catch (err) {
-      setError("Gagal menambahkan grup obat.");
+      setError("Gagal menambahkan grup.");
     } finally {
       setLoading(false);
     }
@@ -55,7 +54,7 @@ export default function TambahGrup() {
         <div className="flex justify-between">
           <button
             type="submit"
-            className="bg-emerald-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-emerald-700"
+            className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-blue-700"
             disabled={loading}
           >
             {loading ? "Menyimpan..." : "Tambah Grup"}

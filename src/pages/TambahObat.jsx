@@ -5,7 +5,7 @@ import AlertBox from "../components/AlertBox";
 
 export default function TambahObat() {
     const navigate = useNavigate();
-    const [form, setForm] = useState({ nama_obat: "", quantity: "", jenis: "", grup_id: "" });
+    const [form, setForm] = useState({ nama_obat: "", quantity: "", grup_id: "" });
     const [grupList, setGrupList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
@@ -58,16 +58,6 @@ export default function TambahObat() {
                 />
 
                 <input
-                    type="text"
-                    name="jenis"
-                    value={form.jenis}
-                    onChange={handleChange}
-                    placeholder="Jenis Obat"
-                    required
-                    className="w-full p-3 border rounded-xl"
-                />
-
-                <input
                     type="number"
                     name="quantity"
                     value={form.quantity}
@@ -93,7 +83,7 @@ export default function TambahObat() {
                 <div className="flex justify-between">
                     <button
                         type="submit"
-                        className="bg-emerald-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-emerald-700"
+                        className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-blue-700"
                         disabled={loading}
                     >
                         {loading ? "Menyimpan..." : "Tambah Obat"}
