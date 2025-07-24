@@ -13,6 +13,7 @@ import lozenges from "../assets/obat/lozenges.png";
 import multivitamin from "../assets/obat/multivitamin.png";
 import promo1 from "../assets/promo1.png";
 import promo2 from "../assets/promo2.png";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -28,9 +29,12 @@ export default function LandingPage() {
               Apotek online terbaik untuk semua kebutuhan Anda. Cepat,
               terpercaya, dan terjangkau.
             </p>
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold">
-              Belanja Sekarang
-            </button>
+            <Link
+              to="/products"
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              Lihat Produk
+            </Link>
           </div>
           <div className="bg-gray-300 h-64 md:h-80 rounded-xl">
             <div data-aos="zoom-out">
@@ -99,6 +103,12 @@ export default function LandingPage() {
                 <p className="text-gray-500 mt-2">
                   Nikmati diskon untuk pembelian pertama Anda di website kami
                 </p>
+                <Link
+                  to="/products"
+                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                >
+                  Lihat Produk
+                </Link>
               </div>
               <div className="w-40 h-40 relative">
                 <img
@@ -126,7 +136,7 @@ export default function LandingPage() {
                 <img
                   src={promo2}
                   alt="Promo 30%"
-                  className="w-full h-32 object-cover rounded-lg mt-2"
+                  className="w-full h-60 object-cover rounded-lg mt-2"
                 />
               </div>
               <div className="flex items-center justify-between mt-4">
@@ -134,9 +144,12 @@ export default function LandingPage() {
                   <span className="text-2xl text-green-600 font-bold">30%</span>{" "}
                   Diskon
                 </h2>
-                <button className="bg-white text-blue-600 font-semibold text-sm px-4 py-2 rounded-full hover:bg-blue-100 transition">
-                  Belanja Sekarang
-                </button>
+                <Link
+                  to="/products"
+                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                >
+                  Lihat Produk
+                </Link>
               </div>
             </div>
           </div>
@@ -208,7 +221,7 @@ export default function LandingPage() {
             {/* Bagian gambar untuk "Komitmen Kami terhadap Kualitas" */}
             <div className="bg-gray-300 h-64 rounded-xl flex items-center justify-center overflow-hidden">
               <img
-                src="https://www.purobien.com/upload/lab-image.jpg" // <--- Link gambar diubah di sini
+                src="https://i0.wp.com/blog.apotekdigital.com/wp-content/uploads/2023/03/Untitled-design-1-1-jpg.webp?fit=1920%2C1080&ssl=1" // <--- Link gambar diubah di sini
                 alt="Quality Control Laboratory"
                 className="w-full h-full object-cover"
               />
@@ -226,17 +239,16 @@ export default function LandingPage() {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                "Pembuatan Resep Obat",
-                "Pengiriman ke Rumah",
-                "Konsultasi Kesehatan",
+                { label: "Pembuatan Resep Obat", icon: <FaGift /> },
+                { label: "Pengiriman ke Rumah", icon: <FaShippingFast /> },
+                { label: "Konsultasi Kesehatan", icon: <FaHeadset /> },
               ].map((service, idx) => (
                 <div
-                  key={service}
-                  className="bg-white text-blue-800 p-6 rounded-xl"
+                  key={service.label}
+                  className="bg-white text-blue-800 p-6 rounded-xl shadow hover:shadow-xl transform hover:-translate-y-2 transition duration-300 flex flex-col items-center space-y-3"
                 >
-                  <p className="font-bold">
-                    {idx + 1}. {service}
-                  </p>
+                  <div className="text-3xl text-blue-600">{service.icon}</div>
+                  <p className="font-semibold">{service.label}</p>
                 </div>
               ))}
             </div>
