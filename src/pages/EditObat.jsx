@@ -49,7 +49,7 @@ export default function EditObat() {
             setLoading(true);
             await obatAPI.updateObat(id, form);
             setSuccess("Obat berhasil diperbarui!");
-            setTimeout(() => navigate("/medicine"), 1000);
+            setTimeout(() => navigate("/obat"), 1000);
         } catch (err) {
             setError("Gagal memperbarui obat.");
         } finally {
