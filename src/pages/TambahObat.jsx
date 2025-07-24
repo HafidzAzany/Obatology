@@ -31,7 +31,7 @@ export default function TambahObat() {
             setError("");
             await obatAPI.createObat(form);
             setSuccess("Obat berhasil ditambahkan!");
-            setTimeout(() => navigate("/medicine"), 1000);
+            setTimeout(() => navigate("/obat"), 1000);
         } catch (err) {
             setError("Gagal menambahkan obat.");
         } finally {

@@ -25,7 +25,7 @@ export default function TambahGrup() {
       setLoading(true);
       await obatAPI.createGrup(form);
       setSuccess("Grup berhasil ditambahkan!");
-      setTimeout(() => navigate("/medicine-groups"), 1000);
+      setTimeout(() => navigate("/grup"), 1000);
     } catch (err) {
       setError("Gagal menambahkan grup.");
     } finally {
