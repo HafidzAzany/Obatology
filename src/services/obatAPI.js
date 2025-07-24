@@ -19,8 +19,9 @@ export const obatAPI = {
     return response.data;
   },
 
+  // Kept this fetchObatById as it includes grup_obat relation
   async fetchObatById(id) {
-    const response = await axios.get(`${BASE_URL}/obat?id_obat=eq.${id}`, {
+    const response = await axios.get(`${BASE_URL}/obat?id_obat=eq.${id}&select=*,grup_obat(nama_grup)`, {
       headers,
     });
     return response.data[0];
@@ -98,9 +99,16 @@ export const obatAPI = {
 
   // LAPORAN OBAT
   async fetchLaporan() {
+    // Removed the custom axios instance and manual redirect handling.
+    // Axios handles redirects by default for GET requests.
     const response = await axios.get(
-      `${BASE_URL}/laporan_obat?select=id_laporan,tanggal,jumlah_dipakai,keterangan,obat:obat_id(nama_obat)`,
-      { headers }
+      `${BASE_URL}/laporan_obat`,
+      {
+        headers,
+        params: {
+          select: 'id_laporan,tanggal,nama_obat,jumlah_dipakai,keterangan'
+        }
+      }
     );
     return response.data;
   },
@@ -109,29 +117,5 @@ export const obatAPI = {
     const response = await axios.post(`${BASE_URL}/laporan_obat`, data, { headers });
     return response.data;
   },
-
-  async kurangiStokObat(id, jumlah_dipakai) {
-    // Ambil quantity sekarang
-    const res = await axios.get(`${BASE_URL}/obat?id_obat=eq.${id}`, { headers });
-    const obat = res.data[0];
-    const stokBaru = obat.quantity - jumlah_dipakai;
   
-    // Update stoknya
-    const response = await axios.patch(`${BASE_URL}/obat?id_obat=eq.${id}`, {
-      quantity: stokBaru
-    }, { headers });
-  
-    return response.data;
-  },
-
-  //Detail Product
-  async fetchObatById(id) {
-    const response = await axios.get(`${BASE_URL}/obat?id_obat=eq.${id}&select=*,grup_obat(nama_grup)`, {
-      headers,
-    });
-    return response.data[0];
-  }
-  
-  
-
 };

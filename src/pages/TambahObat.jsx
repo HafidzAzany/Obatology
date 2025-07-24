@@ -90,7 +90,7 @@ export default function TambahObat() {
                     </button>
                     <button
                         type="button"
-                        onClick={() => navigate("/medicine")}
+                        onClick={() => navigate("/obat")}
                         className="px-4 py-2 bg-gray-300 rounded-xl text-gray-800 hover:bg-gray-400"
                     >
                         Batal

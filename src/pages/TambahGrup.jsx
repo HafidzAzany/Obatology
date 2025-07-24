@@ -61,7 +61,7 @@ export default function TambahGrup() {
           </button>
           <button
             type="button"
-            onClick={() => navigate("/medicine-groups")}
+            onClick={() => navigate("/grup")}
             className="px-4 py-2 bg-gray-300 rounded-xl text-gray-800 hover:bg-gray-400"
           >
             Batal
