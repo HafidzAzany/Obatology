@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 export default function AboutClinic() {
   const testimonials = [
@@ -192,12 +193,14 @@ export default function AboutClinic() {
               <div
                 key={idx}
                 className="bg-gray-50 shadow p-6 rounded-xl flex flex-col items-center text-center"
-              ><center>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-red-300"
-                /></center>
+              >
+                <center>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-red-300"
+                  />
+                </center>
                 <p className="italic text-gray-700 mb-4">"{item.quote}"</p>
                 <p className="font-semibold text-sm">{item.name}</p>
                 <p className="text-gray-400 text-xs">{item.age}</p>
@@ -219,9 +222,12 @@ export default function AboutClinic() {
         <p className="mb-6">
           Jelajahi produk & layanan kesehatan kami sekarang juga.
         </p>
-        <button className="bg-green-400 text-blue-900 px-6 py-2 rounded-full font-semibold hover:bg-green-500 transition">
-          Mulai Belanja
-        </button>
+        <Link
+          to="/products"
+          className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+          Lihat Produk
+        </Link>
       </section>
     </div>
   );
