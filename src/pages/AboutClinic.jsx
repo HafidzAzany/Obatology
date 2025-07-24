@@ -38,6 +38,7 @@ export default function AboutClinic() {
   return (
     <div data-aos="fade-down">
       <div className="bg-blue-100 text-[#0b0b0b]">
+        {/* Bagian Tim Kami (Sudah ada) */}
         <section className="py-20 container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start">
             <div className="max-w-lg">
@@ -115,6 +116,88 @@ export default function AboutClinic() {
           </div>
         </section>
 
+        {/* Bagian Kisah Kami (Our Story) - BARU */}
+        <section className="py-20 container mx-auto px-4 bg-white rounded-xl shadow-lg mb-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Our Story</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Obatology Store dimulai pada tahun 2005 dengan visi untuk
+              memudahkan akses masyarakat terhadap obat-obatan dan produk
+              kesehatan yang berkualitas. Berawal dari apotek fisik kecil, kami
+              berkembang menjadi platform online terkemuka, melayani ribuan
+              pelanggan di seluruh Indonesia. Perjalanan kami penuh dengan
+              dedikasi untuk inovasi dan pelayanan terbaik.
+            </p>
+            {/* Anda bisa menambahkan gambar atau elemen lain di sini */}
+          </div>
+        </section>
+
+        {/* Bagian Misi dan Visi (Mission & Vision) - BARU */}
+        <section className="py-20 container mx-auto px-4 bg-white rounded-xl shadow-lg mb-10">
+          <div className="grid md:grid-cols-2 gap-10">
+            <div>
+              <h3 className="text-2xl font-bold mb-3 text-black-600">Misi Kami</h3>
+              <p className="text-gray-700">
+                Menyediakan akses mudah dan cepat ke berbagai produk kesehatan
+                berkualitas tinggi, didukung oleh informasi yang akurat dan
+                layanan pelanggan yang responsif.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-3 text-black-600">Visi Kami</h3>
+              <p className="text-gray-700">
+                Menjadi apotek online terdepan yang dipercaya masyarakat,
+                memberikan solusi kesehatan inovatif dan berkelanjutan untuk
+                kesejahteraan bersama.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Bagian Nilai-nilai Kami (Our Values) - BARU */}
+        <section className="py-20 container mx-auto px-4 bg-white rounded-xl shadow-lg mb-10">
+          <h2 className="text-3xl font-bold mb-8 text-center">Nilai-Nilai Kami</h2>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <h4 className="font-semibold text-xl mb-2">Integritas</h4>
+              <p className="text-gray-600 text-sm">
+                Kami menjunjung tinggi kejujuran dan etika dalam setiap aspek
+                bisnis.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <h4 className="font-semibold text-xl mb-2">Inovasi</h4>
+              <p className="text-gray-600 text-sm">
+                Terus berinovasi untuk memberikan solusi kesehatan yang lebih
+                baik.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <h4 className="font-semibold text-xl mb-2">Pelayanan Prima</h4>
+              <p className="text-gray-600 text-sm">
+                Komitmen untuk memberikan pengalaman terbaik bagi pelanggan.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Bagian Pencapaian dan Tonggak Sejarah (Achievements & Milestones) - BARU */}
+        <section className="py-20 container mx-auto px-4 bg-white rounded-xl shadow-lg mb-10">
+          <h2 className="text-3xl font-bold mb-8 text-center">Pencapaian Kami</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-6 bg-gray-50 rounded-lg text-center">
+              <p className="text-5xl font-bold text-blue-600 mb-2">1 Juta+</p>
+              <p className="text-gray-700">Pelanggan Terlayani</p>
+            </div>
+            <div className="p-6 bg-gray-50 rounded-lg text-center">
+              <p className="text-5xl font-bold text-green-600 mb-2">200+</p>
+              <p className="text-gray-700">Produk Tersedia</p>
+            </div>
+            {/* Tambahkan lebih banyak pencapaian jika ada */}
+          </div>
+        </section>
+
+        {/* Bagian Testimoni (Sudah ada) */}
         <section id="testimonials" className="bg-gray-50 py-20">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-start">
@@ -152,6 +235,18 @@ export default function AboutClinic() {
             </div>
           </div>
         </section>
+
+        {/* Bagian Ajakan Bertindak (Call to Action) - BARU */}
+        <section className="py-20 container mx-auto px-4 bg-blue-700 text-white text-center rounded-xl shadow-lg">
+            <h2 className="text-3xl font-bold mb-4">Siap untuk Hidup Lebih Sehat?</h2>
+            <p className="text-lg mb-8">
+                Jelajahi berbagai produk dan layanan kesehatan kami sekarang juga.
+            </p>
+            <button className="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition">
+                Mulai Belanja
+            </button>
+        </section>
+
       </div>
     </div>
   );

@@ -43,17 +43,12 @@ export default function NavBarLanding() {
             </a>
           </nav>
           <div className="space-x-2 hidden md:block">
+            <div></div>
             <Link
               to="/login"
               className="px-6 py-2 border bg-blue-600 border-[rgb(19,100,255)] text-white rounded-full hover:bg-cyan-400 hover:text-white transition"
             >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-cyan-500 transition"
-            >
-              Daftar
+              Login Staff
             </Link>
           </div>
         </div>

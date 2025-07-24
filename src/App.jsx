@@ -16,6 +16,8 @@ const GroupDetail = React.lazy(() => import("./pages/GroupDetail"));
 const User = React.lazy(() => import("./pages/User"));
 const TambahUser = React.lazy(() => import("./pages/TambahUser"));
 const EditUser = React.lazy(() => import("./pages/EditUser"));
+const ReportPage = React.lazy(() => import("./pages/ReportPage"));
+const TambahLaporan = React.lazy(() => import("./pages/TambahLaporan"));
 const DetailProduct = React.lazy(() => import("./pages/DetailProduct"));
 const Inventory = React.lazy(() => import("./pages/Inventory"));
 const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
@@ -53,22 +55,23 @@ function App() {
           <Route path="/obat" element={<MedicineList />} />
           <Route path="/tambah-obat" element={<TambahObat />} />
           <Route path="/edit-obat/:id" element={<EditObat />} />
-          <Route path="*" element={<MedicineList />} />
           <Route path="/grup" element={<MedicineGroup />} />
           <Route path="/tambah-grup" element={<TambahGrup />} />
           <Route path="/group-detail/:groupName" element={<GroupDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/tambah-user" element={<TambahUser />} />
           <Route path="/edit-user/:id" element={<EditUser />} />
+          <Route path="/laporan" element={<ReportPage />} />
+          <Route path="/tambah-laporan" element={<TambahLaporan />} />
           <Route path="/inventory" element={<Inventory />} />
         </Route>
 
         <Route
-          path="/*"
+          path="*"
           element={
             <ErrorPage
               kode="403"
-              deskripsi="Halaman ini masih dalam maintanence"
+              deskripsi="Halaman ini masih tidak tersedia"
               img="./img/Error403.jpg"
             />
           }
@@ -81,7 +84,7 @@ function App() {
           {/* Route untuk halaman Produk */}
           <Route path="/products" element={<ProductsLanding />} />
           {/* <Route path="/products" element={<ProductObat />} /> */}
-          <Route path="/product/:id" element={<DetailProduct />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           {/* Route untuk halaman About */}
           <Route path="/about" element={<AboutClinic />} />
           {/* Route untuk halaman Data User */}

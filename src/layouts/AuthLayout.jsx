@@ -17,7 +17,7 @@ export default function AuthLayout() {
 
             <h1 className="text-4xl font-poppins font-extrabold text-gray-800">
               <span className="text-blue-500">Selamat Datang</span>
-              <span className="text-green-500">!</span>
+              <span className="text-blue-500">!</span>
             </h1>
           </div>
 

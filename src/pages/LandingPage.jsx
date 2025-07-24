@@ -97,7 +97,7 @@ export default function LandingPage() {
                   Diskon
                 </h2>
                 <p className="text-gray-500 mt-2">
-                  Libero diam auctor tristique hendrerit in eu vel id.
+                  Nikmati diskon untuk pembelian pertama Anda di website kami
                 </p>
               </div>
               <div className="w-40 h-40 relative">
